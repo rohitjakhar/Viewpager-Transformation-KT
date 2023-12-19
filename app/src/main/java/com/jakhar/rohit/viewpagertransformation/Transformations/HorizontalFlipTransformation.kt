@@ -1,48 +1,32 @@
-package com.jakhar.rohit.viewpagertransformation.Transformations;
+package com.jakhar.rohit.viewpagertransformation.Transformations
 
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.View;
+import android.util.Log
+import android.view.View
+import androidx.viewpager2.widget.ViewPager2
 
-public class HorizontalFlipTransformation implements ViewPager.PageTransformer {
-    @Override
-    public void transformPage(View page, float position) {
-
-        page.setTranslationX(-position*page.getWidth());
-        page.setCameraDistance(20000);
-
-        if (position < 0.5 && position > -0.5){
-            page.setVisibility(View.VISIBLE);
+class HorizontalFlipTransformation : ViewPager2.PageTransformer {
+    override fun transformPage(page: View, position: Float) {
+        page.translationX = -position * page.width
+        page.cameraDistance = 20000f
+        if (position < 0.5 && position > -0.5) {
+            page.visibility = View.VISIBLE
+        } else {
+            page.visibility = View.INVISIBLE
         }
-        else {
-            page.setVisibility(View.INVISIBLE);
-        }
-
-
-
-        if (position < -1){     // [-Infinity,-1)
+        if (position < -1) {     // [-Infinity,-1)
             // This page is way off-screen to the left.
-            page.setAlpha(0);
-
-        }
-        else if (position <= 0 ){    // [-1,0]
-            page.setAlpha(1);
-            page.setRotationX(180*(1-Math.abs(position)+1));
-            Log.e("HORIZONTAL", "position <= 0     " + (180 * (1 - Math.abs(position) + 1)));
-
-        }
-        else if (position <= 1){    // (0,1]
-            page.setAlpha(1);
-            page.setRotationX(-180*(1-Math.abs(position)+1));
-            Log.e("HORIZONTAL", "position <= 1     " + (-180 * (1 - Math.abs(position) + 1)));
-
-        }
-        else {    // (1,+Infinity]
+            page.alpha = 0f
+        } else if (position <= 0) {    // [-1,0]
+            page.alpha = 1f
+            page.rotationX = 180 * (1 - Math.abs(position) + 1)
+            Log.e("HORIZONTAL", "position <= 0     " + 180 * (1 - Math.abs(position) + 1))
+        } else if (position <= 1) {    // (0,1]
+            page.alpha = 1f
+            page.rotationX = -180 * (1 - Math.abs(position) + 1)
+            Log.e("HORIZONTAL", "position <= 1     " + -180 * (1 - Math.abs(position) + 1))
+        } else {    // (1,+Infinity]
             // This page is way off-screen to the right.
-            page.setAlpha(0);
-
+            page.alpha = 0f
         }
-
-
     }
 }

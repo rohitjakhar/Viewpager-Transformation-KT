@@ -1,11 +1,10 @@
-package com.jakhar.rohit.viewpagertransformation.Transformations;
+package com.jakhar.rohit.viewpagertransformation.Transformations
 
-import android.support.v4.view.ViewPager;
-import android.view.View;
+import android.view.View
+import androidx.viewpager2.widget.ViewPager2
 
-public class SimpleTransformation implements ViewPager.PageTransformer {
-    @Override
-    public void transformPage(View page, float position) {
+class SimpleTransformation : ViewPager2.PageTransformer {
+    override fun transformPage(page: View, position: Float) {
 
     }
 }

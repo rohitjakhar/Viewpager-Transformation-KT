@@ -1,16 +1,11 @@
-package com.jakhar.rohit.viewpagertransformation.Transformations;
+package com.jakhar.rohit.viewpagertransformation.Transformations
 
-import android.support.v4.view.ViewPager;
-import android.view.View;
+import android.view.View
+import androidx.viewpager2.widget.ViewPager2
 
-public class FadeOutTransformation implements ViewPager.PageTransformer{
-    @Override
-    public void transformPage(View page, float position) {
-
-        page.setTranslationX(-position*page.getWidth());
-
-        page.setAlpha(1-Math.abs(position));
-
-
+class FadeOutTransformation : ViewPager2.PageTransformer {
+    override fun transformPage(page: View, position: Float) {
+        page.translationX = -position * page.width
+        page.alpha = 1 - Math.abs(position)
     }
 }

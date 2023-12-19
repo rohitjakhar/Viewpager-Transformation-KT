@@ -1,30 +1,22 @@
-package com.jakhar.rohit.viewpagertransformation;
+package com.jakhar.rohit.viewpagertransformation
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
-import java.util.ArrayList;
-
-public class MyPagerAdapter extends FragmentPagerAdapter {
-
-    ArrayList<Fragment> fragmentList = new ArrayList<>();
-
-    public MyPagerAdapter(FragmentManager fm) {
-        super(fm);
+class MyPagerAdapter(fm: FragmentManager, lf: Lifecycle) : FragmentStateAdapter(fm, lf) {
+    var fragmentList: ArrayList<Fragment> = ArrayList<Fragment>()
+    fun addFragments(fragment: Fragment) {
+        fragmentList.add(fragment)
     }
 
-    @Override
-    public Fragment getItem(int position) {
-        return fragmentList.get(position);
+    override fun getItemCount(): Int {
+        return fragmentList.size
     }
 
-    @Override
-    public int getCount() {
-        return fragmentList.size();
-    }
-
-    public void addFragments(Fragment fragment){
-        fragmentList.add(fragment);
+    override fun createFragment(position: Int): Fragment {
+        return fragmentList[position]
     }
 }

@@ -1,22 +1,17 @@
-package com.jakhar.rohit.viewpagertransformation.Transformations;
+package com.jakhar.rohit.viewpagertransformation.Transformations
 
-import android.support.v4.view.ViewPager;
-import android.view.View;
+import android.view.View
+import androidx.viewpager2.widget.ViewPager2
 
-public class PopTransformation implements ViewPager.PageTransformer {
-    @Override
-    public void transformPage(View page, float position) {
-
-        page.setTranslationX(-position * page.getWidth());
-
+class PopTransformation : ViewPager2.PageTransformer {
+    override fun transformPage(page: View, position: Float) {
+        page.translationX = -position * page.width
         if (Math.abs(position) < 0.5) {
-            page.setVisibility(View.VISIBLE);
-            page.setScaleX(1 - Math.abs(position));
-            page.setScaleY(1 - Math.abs(position));
+            page.visibility = View.VISIBLE
+            page.scaleX = 1 - Math.abs(position)
+            page.scaleY = 1 - Math.abs(position)
         } else if (Math.abs(position) > 0.5) {
-            page.setVisibility(View.GONE);
+            page.visibility = View.GONE
         }
-
-
     }
 }

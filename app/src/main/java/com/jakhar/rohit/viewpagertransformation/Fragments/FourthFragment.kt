@@ -1,37 +1,26 @@
-package com.jakhar.rohit.viewpagertransformation.Fragments;
+package com.jakhar.rohit.viewpagertransformation.Fragments
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import com.jakhar.rohit.viewpagertransformation.R
+import com.squareup.picasso.Picasso
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
 
-import com.jakhar.rohit.viewpagertransformation.R;
-import com.squareup.picasso.Picasso;
-
-public class FourthFragment extends Fragment {
-
-
-    public FourthFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+class FourthFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fourth, container, false);
+        return inflater.inflate(R.layout.fragment_fourth, container, false)
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        ImageView four = (ImageView) view.findViewById(R.id.fragmentFourBackground);
-
-        Picasso.get().load(R.drawable.four).fit().centerCrop().into(four);
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val four = view.findViewById<View>(R.id.fragmentFourBackground) as ImageView
+        Picasso.get().load(R.drawable.four).fit().centerCrop().into(four)
     }
 }

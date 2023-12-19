@@ -1,113 +1,76 @@
-package com.jakhar.rohit.viewpagertransformation;
+package com.jakhar.rohit.viewpagertransformation
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle
+import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
+import com.jakhar.rohit.viewpagertransformation.Fragments.EighthFragment
+import com.jakhar.rohit.viewpagertransformation.Fragments.FifthFragment
+import com.jakhar.rohit.viewpagertransformation.Fragments.FirstFragment
+import com.jakhar.rohit.viewpagertransformation.Fragments.FourthFragment
+import com.jakhar.rohit.viewpagertransformation.Fragments.NinthFragment
+import com.jakhar.rohit.viewpagertransformation.Fragments.SecondFragment
+import com.jakhar.rohit.viewpagertransformation.Fragments.SeventhFragment
+import com.jakhar.rohit.viewpagertransformation.Fragments.SixthFragment
+import com.jakhar.rohit.viewpagertransformation.Fragments.TenthFragment
+import com.jakhar.rohit.viewpagertransformation.Fragments.ThirdFragment
 
-import com.jakhar.rohit.viewpagertransformation.Fragments.EighthFragment;
-import com.jakhar.rohit.viewpagertransformation.Fragments.FifthFragment;
-import com.jakhar.rohit.viewpagertransformation.Fragments.FirstFragment;
-import com.jakhar.rohit.viewpagertransformation.Fragments.FourthFragment;
-import com.jakhar.rohit.viewpagertransformation.Fragments.NinthFragment;
-import com.jakhar.rohit.viewpagertransformation.Fragments.SecondFragment;
-import com.jakhar.rohit.viewpagertransformation.Fragments.SeventhFragment;
-import com.jakhar.rohit.viewpagertransformation.Fragments.SixthFragment;
-import com.jakhar.rohit.viewpagertransformation.Fragments.TenthFragment;
-import com.jakhar.rohit.viewpagertransformation.Fragments.ThirdFragment;
-
-public class CircularViewPager extends AppCompatActivity {
-
-    Handler handler = new Handler();
-
-    ViewPager viewPager;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_circular_view_pager);
-        
-        viewPager = findViewById(R.id.viewPager);
-
-        addFragment();
+class CircularViewPager : AppCompatActivity() {
+    var handler = Handler()
+    lateinit var viewPager: ViewPager2
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_circular_view_pager)
+        viewPager = findViewById(R.id.viewPager)
+        addFragment()
     }
 
-
-    private void addFragment() {
-
-        MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
-
-        FirstFragment f1 = new FirstFragment();
-        FirstFragment f2 = new FirstFragment();
-        SecondFragment second = new SecondFragment();
-        ThirdFragment third = new ThirdFragment();
-        FourthFragment fourth = new FourthFragment();
-        FifthFragment fifth = new FifthFragment();
-        SixthFragment sixth = new SixthFragment();
-        SeventhFragment seventh = new SeventhFragment();
-        EighthFragment eight = new EighthFragment();
-        NinthFragment ninth = new NinthFragment();
-        TenthFragment t1 = new TenthFragment();
-        TenthFragment t2 = new TenthFragment();
-
-        adapter.addFragments(t2);
-        adapter.addFragments(f1);
-        adapter.addFragments(second);
-        adapter.addFragments(third);
-        adapter.addFragments(fourth);
-        adapter.addFragments(fifth);
-        adapter.addFragments(sixth);
-        adapter.addFragments(seventh);
-        adapter.addFragments(eight);
-        adapter.addFragments(ninth);
-        adapter.addFragments(t1);
-        adapter.addFragments(f2);
-
-        viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(1);
-
-        viewPager.addOnPageChangeListener(new MyPageListener());
-
-
+    private fun addFragment() {
+        val adapter = MyPagerAdapter(getSupportFragmentManager(), this.lifecycle)
+        val f1 = FirstFragment()
+        val f2 = FirstFragment()
+        val second = SecondFragment()
+        val third = ThirdFragment()
+        val fourth = FourthFragment()
+        val fifth = FifthFragment()
+        val sixth = SixthFragment()
+        val seventh = SeventhFragment()
+        val eight = EighthFragment()
+        val ninth = NinthFragment()
+        val t1 = TenthFragment()
+        val t2 = TenthFragment()
+        adapter.addFragments(t2)
+        adapter.addFragments(f1)
+        adapter.addFragments(second)
+        adapter.addFragments(third)
+        adapter.addFragments(fourth)
+        adapter.addFragments(fifth)
+        adapter.addFragments(sixth)
+        adapter.addFragments(seventh)
+        adapter.addFragments(eight)
+        adapter.addFragments(ninth)
+        adapter.addFragments(t1)
+        adapter.addFragments(f2)
+        viewPager.adapter = adapter
+        viewPager.currentItem = 1
+        viewPager.registerOnPageChangeCallback(MyPageListener())
     }
 
-
-    private class MyPageListener implements ViewPager.OnPageChangeListener {
-
-
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-
+    private inner class MyPageListener : ViewPager2.OnPageChangeCallback() {
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+        override fun onPageSelected(position: Int) {
             if (position == 0) {
-
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        viewPager.setCurrentItem(10, false);
-                    }
-                }, 500);
-
+                handler.postDelayed({ viewPager.setCurrentItem(10, false) }, 500)
             } else if (position == 11) {
-
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        viewPager.setCurrentItem(1, false);
-                    }
-                }, 500);
+                handler.postDelayed({ viewPager.setCurrentItem(1, false) }, 500)
             }
-
         }
 
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
+        override fun onPageScrollStateChanged(state: Int) {}
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewPager.unregisterOnPageChangeCallback(MyPageListener())
+    }
 }

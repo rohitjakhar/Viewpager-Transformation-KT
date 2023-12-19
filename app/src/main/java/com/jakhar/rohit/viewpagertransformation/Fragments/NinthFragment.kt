@@ -1,37 +1,26 @@
-package com.jakhar.rohit.viewpagertransformation.Fragments;
+package com.jakhar.rohit.viewpagertransformation.Fragments
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import com.jakhar.rohit.viewpagertransformation.R
+import com.squareup.picasso.Picasso
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
 
-import com.jakhar.rohit.viewpagertransformation.R;
-import com.squareup.picasso.Picasso;
-
-public class NinthFragment extends Fragment {
-
-
-    public NinthFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+class NinthFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ninth, container, false);
+        return inflater.inflate(R.layout.fragment_ninth, container, false)
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        ImageView nine = (ImageView)view.findViewById(R.id.fragmentNineBackground);
-
-        Picasso.get().load(R.drawable.nine).fit().centerCrop().into(nine);
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val nine = view.findViewById<View>(R.id.fragmentNineBackground) as ImageView
+        Picasso.get().load(R.drawable.nine).fit().centerCrop().into(nine)
     }
 }
