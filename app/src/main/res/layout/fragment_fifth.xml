@@ -7,7 +7,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingBottom="20dp"
-    tools:context="com.kumar.dipanshu.viewpagertransformation.Fragments.FifthFragment">
+    tools:context="com.jakhar.rohit.viewpagertransformation.Fragments.FifthFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.CardView

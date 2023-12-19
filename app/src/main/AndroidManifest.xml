@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kumar.dipanshu.viewpagertransformation">
+    package="com.jakhar.rohit.viewpagertransformation">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MenuActivity"
+            android:name="com.jakhar.rohit.viewpagertransformation.MenuActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +19,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TransformationActivity"
+            android:name="com.jakhar.rohit.viewpagertransformation.TransformationActivity"
             android:theme="@style/TransformationTheme" />
-        <activity android:name=".CircularViewPager"
+        <activity android:name="com.jakhar.rohit.viewpagertransformation.CircularViewPager"
             android:theme="@style/TransformationTheme"/>
     </application>
 

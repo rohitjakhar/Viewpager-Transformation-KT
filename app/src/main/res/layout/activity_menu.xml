@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context="com.kumar.dipanshu.viewpagertransformation.MenuActivity">
+    tools:context="com.jakhar.rohit.viewpagertransformation.MenuActivity">
 
     <Button
         android:id="@+id/slowTransformation"

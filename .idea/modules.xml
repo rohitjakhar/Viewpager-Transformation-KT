@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ViewPagerTransformation.iml" filepath="$PROJECT_DIR$/ViewPagerTransformation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Viewpager-Transformation-KT.iml" filepath="$PROJECT_DIR$/.idea/modules/Viewpager-Transformation-KT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Viewpager-Transformation-KT.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Viewpager-Transformation-KT.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Viewpager-Transformation-KT.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Viewpager-Transformation-KT.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Viewpager-Transformation-KT.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Viewpager-Transformation-KT.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Viewpager-Transformation-KT.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Viewpager-Transformation-KT.app.unitTest.iml" />
     </modules>
   </component>
 </project>
