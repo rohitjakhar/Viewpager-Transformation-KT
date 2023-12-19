@@ -1,7 +1,10 @@
 package com.jakhar.rohit.viewpagertransformation
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.jakhar.rohit.viewpagertransformation.Fragments.EighthFragment
 import com.jakhar.rohit.viewpagertransformation.Fragments.FifthFragment
@@ -36,120 +39,80 @@ import com.jakhar.rohit.viewpagertransformation.Transformations.TossTransformati
 import com.jakhar.rohit.viewpagertransformation.Transformations.VerticalFlipTransformation
 import com.jakhar.rohit.viewpagertransformation.Transformations.VerticalShutTransformation
 import com.jakhar.rohit.viewpagertransformation.Transformations.ZoomOutTransformation
+import com.jakhar.rohit.viewpagertransformation.databinding.ActivityTransformationBinding
 
 class TransformationActivity : AppCompatActivity() {
-    lateinit var viewPager: ViewPager2
-    var pagerAdapter: MyPagerAdapter? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_transformation)
-        viewPager = findViewById<ViewPager2>(R.id.viewPager)
-        pagerAdapter = MyPagerAdapter(supportFragmentManager, this.lifecycle)
-        addingFragmentsTOpagerAdapter()
-        viewPager.adapter = pagerAdapter
-        val slowTransformation = SlowTransformation()
-        val simpleTransformation = SimpleTransformation()
-        val depthTransformation = DepthTransformation()
-        val zoomOutTransformation = ZoomOutTransformation()
-        val clockSpinTransformation = Clock_SpinTransformation()
-        val antiClockSpinTransformation = AntiClockSpinTransformation()
-        val fidgetSpinTransformation = FidgetSpinTransformation()
-        val verticalFlipTransformation = VerticalFlipTransformation()
-        val horizontalFlipTransformation = HorizontalFlipTransformation()
-        val popTransformation = PopTransformation()
-        val fadeOutTransformation = FadeOutTransformation()
-        val cubeOutRotationTransformation = CubeOutRotationTransformation()
-        val cubeInRotationTransformation = CubeInRotationTransformation()
-        val cubeOutScalingTransformation = CubeOutScalingTransformation()
-        val cubeInScalingTransformation = CubeInScalingTransformation()
-        val cubeOutDepthTransformation = CubeOutDepthTransformation()
-        val cubeInDepthTransformation = CubeInDepthTransformation()
-        val hingeTransformation = HingeTransformation()
-        val gateTransformation = GateTransformation()
-        val tossTransformation = TossTransformation()
-        val fanTransformation = FanTransformation()
-        val spinnerTransformation = SpinnerTransformation()
-        val verticalShutTransformation = VerticalShutTransformation()
-        val transformation = getIntent().getStringExtra(Constant.TRANSFORMATION)
-        when (transformation) {
-            Constant.SLOW_TRANSFORMATION -> viewPager.setPageTransformer(slowTransformation)
-            Constant.SIMPLE_TRANSFORMATION -> viewPager.setPageTransformer(simpleTransformation)
-
-            Constant.DEPTH_TRANSFORMATION -> viewPager.setPageTransformer(depthTransformation)
-            Constant.ZOOM_OUT_TRANSFORMATION -> viewPager.setPageTransformer(zoomOutTransformation
-            )
-
-            Constant.CLOCK_SPIN_TRANSFORMATION -> viewPager.setPageTransformer(
-                clockSpinTransformation
-            )
-
-            Constant.ANTICLOCK_SPIN_TRANSFORMATION -> viewPager.setPageTransformer(
-                antiClockSpinTransformation
-            )
-
-            Constant.FIDGET_SPINNER_TRANSFORMATION -> viewPager.setPageTransformer(
-                fidgetSpinTransformation
-            )
-
-            Constant.VERTICAL_FLIP_TRANSFORMATION -> viewPager.setPageTransformer(
-                verticalFlipTransformation
-            )
-
-            Constant.HORIZONTAL_FLIP_TRANSFORMATION -> viewPager.setPageTransformer(
-               horizontalFlipTransformation
-            )
-
-            Constant.POP_TRANSFORMATION -> viewPager.setPageTransformer(popTransformation)
-            Constant.FADE_OUT_TRANSFORMATION -> viewPager.setPageTransformer(
-                fadeOutTransformation
-            )
-
-            Constant.CUBE_OUT_TRANSFORMATION -> viewPager.setPageTransformer(
-                cubeOutRotationTransformation
-            )
-
-            Constant.CUBE_IN_TRANSFORMATION -> viewPager.setPageTransformer(
-                cubeInRotationTransformation
-            )
-
-            Constant.CUBE_OUT_SCALING_TRANSFORMATION -> viewPager.setPageTransformer(
-                cubeOutScalingTransformation
-            )
-
-            Constant.CUBE_IN_SCALING_TRANSFORMATION -> viewPager.setPageTransformer(
-                cubeInScalingTransformation
-            )
-
-            Constant.CUBE_OUT_DEPTH_TRANSFORMATION -> viewPager.setPageTransformer(
-                cubeOutDepthTransformation
-            )
-
-            Constant.CUBE_IN_DEPTH_TRANSFORMATION -> viewPager.setPageTransformer(
-                cubeInDepthTransformation
-            )
-
-            Constant.HINGE_TRANSFORMATION -> viewPager.setPageTransformer(hingeTransformation)
-            Constant.GATE_TRANSFORMATION -> viewPager.setPageTransformer(gateTransformation)
-            Constant.TOSS_TRANSFORMATION -> viewPager.setPageTransformer(tossTransformation)
-            Constant.FAN_TRANSFORMATION -> viewPager.setPageTransformer(fanTransformation)
-            Constant.SPINNER_TRANSFORMATION -> viewPager.setPageTransformer(
-                spinnerTransformation
-            )
-
-            Constant.VERTICAL_SHUT_TRANSFORMATION -> viewPager.setPageTransformer(verticalShutTransformation)
-        }
+    private lateinit var binding: ActivityTransformationBinding
+    private val pagerAdapter: MyPagerAdapter by lazy {
+        MyPagerAdapter(
+            supportFragmentManager,
+            lifecycle,
+            getFragmentList()
+        )
     }
 
-    private fun addingFragmentsTOpagerAdapter() {
-        pagerAdapter!!.addFragments(FirstFragment())
-        pagerAdapter!!.addFragments(SecondFragment())
-        pagerAdapter!!.addFragments(ThirdFragment())
-        pagerAdapter!!.addFragments(FourthFragment())
-        pagerAdapter!!.addFragments(FifthFragment())
-        pagerAdapter!!.addFragments(SixthFragment())
-        pagerAdapter!!.addFragments(SeventhFragment())
-        pagerAdapter!!.addFragments(EighthFragment())
-        pagerAdapter!!.addFragments(NinthFragment())
-        pagerAdapter!!.addFragments(TenthFragment())
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityTransformationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        handleTransformation()
+    }
+
+    private fun handleTransformation() {
+        binding.viewPager.adapter = pagerAdapter
+        binding.viewPager.setPageTransformer(
+            when (intent.getStringExtra(transformationType)) {
+                Constant.SLOW_TRANSFORMATION -> SlowTransformation()
+                Constant.SIMPLE_TRANSFORMATION -> SimpleTransformation()
+                Constant.DEPTH_TRANSFORMATION -> DepthTransformation()
+                Constant.ZOOM_OUT_TRANSFORMATION -> ZoomOutTransformation()
+                Constant.CLOCK_SPIN_TRANSFORMATION -> Clock_SpinTransformation()
+                Constant.ANTICLOCK_SPIN_TRANSFORMATION -> AntiClockSpinTransformation()
+                Constant.FIDGET_SPINNER_TRANSFORMATION -> FidgetSpinTransformation()
+                Constant.VERTICAL_FLIP_TRANSFORMATION -> VerticalFlipTransformation()
+                Constant.HORIZONTAL_FLIP_TRANSFORMATION -> HorizontalFlipTransformation()
+                Constant.POP_TRANSFORMATION -> PopTransformation()
+                Constant.FADE_OUT_TRANSFORMATION -> FadeOutTransformation()
+                Constant.CUBE_OUT_TRANSFORMATION -> CubeOutRotationTransformation()
+                Constant.CUBE_IN_TRANSFORMATION -> CubeInRotationTransformation()
+                Constant.CUBE_OUT_SCALING_TRANSFORMATION -> CubeOutScalingTransformation()
+                Constant.CUBE_IN_SCALING_TRANSFORMATION -> CubeInScalingTransformation()
+                Constant.CUBE_OUT_DEPTH_TRANSFORMATION -> CubeOutDepthTransformation()
+                Constant.CUBE_IN_DEPTH_TRANSFORMATION -> CubeInDepthTransformation()
+                Constant.HINGE_TRANSFORMATION -> HingeTransformation()
+                Constant.GATE_TRANSFORMATION -> GateTransformation()
+                Constant.TOSS_TRANSFORMATION -> TossTransformation()
+                Constant.FAN_TRANSFORMATION -> FanTransformation()
+                Constant.SPINNER_TRANSFORMATION -> SpinnerTransformation()
+                Constant.VERTICAL_SHUT_TRANSFORMATION -> VerticalShutTransformation()
+                else -> {
+                    ViewPager2.PageTransformer { _, _ -> }
+                }
+            }
+        )
+    }
+
+    private fun getFragmentList(): List<Fragment> {
+        return listOf(
+            FirstFragment(),
+            SecondFragment(),
+            ThirdFragment(),
+            FourthFragment(),
+            FifthFragment(),
+            SixthFragment(),
+            SeventhFragment(),
+            EighthFragment(),
+            NinthFragment(),
+            TenthFragment(),
+        )
+    }
+
+    companion object {
+        private const val transformationType = Constant.TRANSFORMATION
+        fun getIntent(context: Context, transformation: String): Intent {
+            return Intent(context, TransformationActivity::class.java).apply {
+                putExtra(transformationType, transformation)
+            }
+        }
     }
 }

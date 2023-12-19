@@ -26,10 +26,13 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun handleClicks() = with(binding) {
-        binding.slowTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.SLOW_TRANSFORMATION)
-            startActivity(intent)
+        slowTransformation.setOnClickListener {
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.SLOW_TRANSFORMATION
+                )
+            )
         }
         circularViewpagerTransformation.setOnClickListener {
             startActivity(
@@ -39,135 +42,201 @@ class MenuActivity : AppCompatActivity() {
             )
         }
         simpleTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.SIMPLE_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.SIMPLE_TRANSFORMATION
+                )
+            )
         }
 
         depthTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.DEPTH_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.DEPTH_TRANSFORMATION
+                )
+            )
         }
 
         zoomOutTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.ZOOM_OUT_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.ZOOM_OUT_TRANSFORMATION
+                )
+            )
         }
 
         clockSpinTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.CLOCK_SPIN_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.CLOCK_SPIN_TRANSFORMATION
+                )
+            )
         }
 
         antiClockSpinTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.ANTICLOCK_SPIN_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.ANTICLOCK_SPIN_TRANSFORMATION
+                )
+            )
         }
 
         fidgetSpinTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.FIDGET_SPINNER_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.FIDGET_SPINNER_TRANSFORMATION
+                )
+            )
         }
 
         verticalFlipTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.VERTICAL_FLIP_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.VERTICAL_FLIP_TRANSFORMATION
+                )
+            )
         }
 
         horizontalFlipTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.HORIZONTAL_FLIP_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.HORIZONTAL_FLIP_TRANSFORMATION
+                )
+            )
         }
 
         popTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.POP_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.POP_TRANSFORMATION
+                )
+            )
         }
 
         fadeOutTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.FADE_OUT_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.FADE_OUT_TRANSFORMATION
+                )
+            )
         }
 
         cubeOutTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.CUBE_OUT_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.CUBE_OUT_TRANSFORMATION
+                )
+            )
         }
 
         cubeInTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.CUBE_IN_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.CUBE_IN_TRANSFORMATION
+                )
+            )
         }
 
         cubeOutScalingTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.CUBE_OUT_SCALING_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.CUBE_OUT_SCALING_TRANSFORMATION
+                )
+            )
         }
 
         cubeInScalingTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.CUBE_IN_SCALING_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.CUBE_IN_SCALING_TRANSFORMATION
+                )
+            )
         }
 
         cubeOutDepthTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.CUBE_OUT_DEPTH_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.CUBE_OUT_DEPTH_TRANSFORMATION
+                )
+            )
         }
 
         cubeInDepthTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.CUBE_IN_DEPTH_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.CUBE_IN_DEPTH_TRANSFORMATION
+                )
+            )
         }
 
         hingeTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.HINGE_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.HINGE_TRANSFORMATION
+                )
+            )
         }
 
         gateTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.GATE_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.GATE_TRANSFORMATION
+                )
+            )
         }
 
         tossTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.TOSS_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.TOSS_TRANSFORMATION
+                )
+            )
         }
 
         fanTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.FAN_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.FAN_TRANSFORMATION
+                )
+            )
         }
 
         spinnerTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.SPINNER_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.SPINNER_TRANSFORMATION
+                )
+            )
         }
 
         verticalShutTransformation.setOnClickListener {
-            val startIntent = Intent(this@MenuActivity, TransformationActivity::class.java)
-            startIntent .putExtra(Constant.TRANSFORMATION, Constant.VERTICAL_SHUT_TRANSFORMATION)
-            startActivity(intent)
+            startActivity(
+                TransformationActivity.getIntent(
+                    this@MenuActivity,
+                    Constant.VERTICAL_SHUT_TRANSFORMATION
+                )
+            )
         }
     }
 }

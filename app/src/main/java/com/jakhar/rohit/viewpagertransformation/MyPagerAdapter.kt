@@ -6,11 +6,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class MyPagerAdapter(fm: FragmentManager, lf: Lifecycle) : FragmentStateAdapter(fm, lf) {
-    var fragmentList: ArrayList<Fragment> = ArrayList<Fragment>()
-    fun addFragments(fragment: Fragment) {
-        fragmentList.add(fragment)
-    }
+class MyPagerAdapter(
+    fm: FragmentManager,
+    lf: Lifecycle,
+    private val fragmentList: List<Fragment>
+) : FragmentStateAdapter(fm, lf) {
 
     override fun getItemCount(): Int {
         return fragmentList.size
